@@ -13,3 +13,5 @@ def formulario(request):
 
 def ejemplo(request):
     return render(request,"inicio/ejemplo.html")
+
+
