@@ -11,6 +11,12 @@ class AdministrarModelo(admin.ModelAdmin):
     search_fields= ('matricula','nombre', 'carrera', 'turno')
     date_hierarchy= 'created'
     list_filter= ('carrera', 'turno')
+
+    def get_readonly_fields(self, request, obj = None):
+        if request.user.groups.filter(name="Usuarios").exists():
+            return ('created', 'updated', 'matricula', 'carrera', 'turno')
+        else:
+            return('created', 'updated')
     
 admin.site.register(Alumnos, AdministrarModelo)
 
@@ -19,6 +25,11 @@ class AdministrarComentarios(admin.ModelAdmin):
     search_fields = ('id', 'created')
     date_hierarchy = 'created'
     readonly_fields = ('created', 'id')
+    def get_readonly_fields(self, request, obj=None):
+        if request.user.groups.filter(name="Usuario2").exists():
+            return ('created', 'id', 'alumno')  
+        else:
+            return ('created', 'id')
 
 admin.site.register(Comentario, AdministrarComentarios)
 
