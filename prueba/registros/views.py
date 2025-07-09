@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import *
 from .forms import ComentarioContactoForm
 from .models import ComentarioContacto
+from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
@@ -26,3 +27,11 @@ def contacto(request):
 def registros(request):
     comentarios=ComentarioContacto.objects.all()
     return render(request, "registros/comentario.html", {'comentarios': comentarios})
+
+def eliminarComentarioContacto(request, id, confirmacion='registros/confirmarEliminacion.html'):
+        comentario = get_object_or_404(ComentarioContacto, id=id)
+        if request.method=='POST':
+            comentario.delete()
+            comentarios=ComentarioContacto.objects.all()
+            return render(request,"registros/comentario.html",{'comentarios':comentarios})
+        return render(request, confirmacion, {'object':comentario})
