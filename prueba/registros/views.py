@@ -35,3 +35,16 @@ def eliminarComentarioContacto(request, id, confirmacion='registros/confirmarEli
             comentarios=ComentarioContacto.objects.all()
             return render(request,"registros/comentario.html",{'comentarios':comentarios})
         return render(request, confirmacion, {'object':comentario})
+
+def consultarComentarioIndividual(request, id):
+    comentario=ComentarioContacto.objects.get(id=id)
+    return render(request,"registros/formEditarComentario.html",{'comentario':comentario})
+
+def editarComentarioContacto(request, id):
+    comentario = get_object_or_404(ComentarioContacto, id=id)
+    form = ComentarioContactoForm(request.POST, instance=comentario)
+    if form.is_valid():
+        form.save()
+        comentarios=ComentarioContacto.objects.all()
+        return render(request,"registros/comentario.html",{'comentarios':comentarios})
+    return render(request,"registros/formEditarComentario.html",{'comentario':comentario})
