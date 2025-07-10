@@ -26,10 +26,22 @@ urlpatterns = [
     path('formulario/', views.formulario, name="Formulario"),
     path('ejemplo/', views.ejemplo, name="Ejemplo"),
     path('registrar/',views_registros.registrar,name="Registrar"),
-    path('comentario/', views_registros.registros, name="Comentario"),
+    path('comentario/', views_registros.comentarios, name="Comentario"),
     path('eliminarComentario/<int:id>/',views_registros.eliminarComentarioContacto,name='Eliminar'),
     path('formEditarComentario/<int:id>/',views_registros.consultarComentarioIndividual, name='ConsultaIndividual'),
     path('editarComentario/<int:id>/',views_registros.editarComentarioContacto,name='Editar'),
+    path('consultas1', views_registros.consultar1,name="Consultas"),
+    path('consultas2', views_registros.consultar2,name="Consultas"),
+    path('consultas3', views_registros.consultar3,name="Consultas"),
+    path('consultas4', views_registros.consultar4,name="Consultas"),
+    path('consultas5', views_registros.consultar5,name="Consultas"),
+    path('consultas6', views_registros.consultar6,name="Consultas"),
+    path('consultas7', views_registros.consultar7,name="Consultas"),
+    path('consultas8', views_registros.consultar8,name="Consultas"),
+    path('consultas9', views_registros.consultar9,name="Consultas"),
+    path('consultas10', views_registros.consultar10,name="Consultas"),
+    path('consultas11', views_registros.consultar11,name="Consultas"),
+    path('consultas12', views_registros.consultar12,name="Consultas"),
 ]
 
 

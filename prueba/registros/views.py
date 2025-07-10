@@ -3,6 +3,7 @@ from .models import *
 from .forms import ComentarioContactoForm
 from .models import ComentarioContacto
 from django.shortcuts import get_object_or_404
+import datetime
 
 
 # Create your views here.
@@ -48,3 +49,56 @@ def editarComentarioContacto(request, id):
         comentarios=ComentarioContacto.objects.all()
         return render(request,"registros/comentario.html",{'comentarios':comentarios})
     return render(request,"registros/formEditarComentario.html",{'comentario':comentario})
+
+def consultar1(request):
+    alumnos=Alumnos.objects.filter(carrera="TI")
+    return render(request, "registros/consulta.html",{'alumnos':alumnos})
+
+def consultar2(request):
+    alumnos=Alumnos.objects.filter(carrera="TI").filter(turno="Matutino")
+    return render(request, "registros/consulta.html",{'alumnos':alumnos})
+
+def consultar3(request):
+    alumnos=Alumnos.objects.all().only("matricula","nombre","carrera","turno","imagen")
+    return render(request, "registros/consulta.html",{'alumnos':alumnos})
+
+def consultar4(request):
+    alumnos=Alumnos.objects.filter(turno__contains="Vesp")
+    return render(request, "registros/consulta.html",{'alumnos':alumnos})
+
+def consultar5(request):
+    alumnos=Alumnos.objects.filter(nombre__in=["Juan","Ana"])
+    return render(request, "registros/consulta.html",{'alumnos':alumnos})
+
+def consultar6(request):
+    fechaInicio=datetime.date(2025,7,8)
+    fechaFin=datetime.date(2025,7,12)
+    alumnos=Alumnos.objects.filter(created__range=(fechaInicio, fechaFin))
+    return render(request, "registros/consulta.html",{'alumnos':alumnos})
+
+def consultar7(request):
+    alumnos=Alumnos.objects.filter(comentario__coment__contains='No Inscrito')
+    return render(request, "registros/consulta.html",{'alumnos':alumnos})
+
+def consultar8(request):
+    fechaInicio=datetime.date(2025,7,8)
+    fechaFin=datetime.date(2025,7,10)
+    comentarios=ComentarioContacto.objects.filter(created__range=(fechaInicio, fechaFin))
+    return render(request, "registros/comentario.html",{'comentarios':comentarios})
+
+def consultar9(request):
+    comentarios=ComentarioContacto.objects.filter(mensaje__contains="Mae")
+    return render(request, "registros/comentario.html",{'comentarios':comentarios})
+
+def consultar10(request):
+    comentarios=ComentarioContacto.objects.filter(usuario__in=["Elena"])
+    return render(request, "registros/comentario.html",{'comentarios':comentarios})
+
+def consultar11(request):
+    comentarios=ComentarioContacto.objects.all().only("mensaje")
+    return render(request, "registros/comentario.html",{'comentarios':comentarios})
+
+def consultar12(request):
+    comentarios=ComentarioContacto.objects.filter(usuario="Elena")
+    return render(request, "registros/comentario.html",{'comentarios':comentarios})
+

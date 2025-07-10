@@ -7,7 +7,7 @@ from .models import ComentarioContacto
 
 class AdministrarModelo(admin.ModelAdmin):
     readonly_fields = ('created', 'updated')
-    list_display = ('matricula', 'nombre', 'carrera', 'turno')
+    list_display = ('matricula', 'nombre', 'carrera', 'turno', 'created')
     search_fields= ('matricula','nombre', 'carrera', 'turno')
     date_hierarchy= 'created'
     list_filter= ('carrera', 'turno')

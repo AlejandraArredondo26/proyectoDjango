@@ -1,5 +1,7 @@
 {% extends "inicio/encabezado.html" %} {% block titulo%} CONTACTANOS
-{%endblock%} {% block encabezado%}
+{%endblock%}
+{%block imagen%} {%load static%} {%static 'inicio/images/editar.png'%}{%endblock%}
+ {% block encabezado%}
 <!--Encabezdo -->
 <div class="page-header">
   <div class="page-title">
@@ -15,7 +17,7 @@
   <!--Encabezdo -->
   <div class="page-header">
     <div class="page-title">
-      <h3>Registro <small>Ingresa tu información</small></h3>
+      <h3>Registro <small>Edita tu información</small></h3>
     </div>
   </div>
   <!-- /Encabezado-->
