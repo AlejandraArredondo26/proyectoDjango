@@ -26,8 +26,10 @@ urlpatterns = [
     path('formulario/', views.formulario, name="Formulario"),
     path('ejemplo/', views.ejemplo, name="Ejemplo"),
     path('registrar/',views_registros.registrar,name="Registrar"),
-    path('comentario/', views_registros.comentarios, name="Comentario"),
+    path('comentario/', views_registros.registros, name="Comentario"),
     path('eliminarComentario/<int:id>/',views_registros.eliminarComentarioContacto,name='Eliminar'),
+    path('formEditarComentario/<int:id>/',views_registros.consultarComentarioIndividual, name='ConsultaIndividual'),
+    path('editarComentario/<int:id>/',views_registros.editarComentarioContacto,name='Editar'),
 ]
 
 
