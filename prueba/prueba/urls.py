@@ -43,6 +43,7 @@ urlpatterns = [
     path('consultas11', views_registros.consultar11,name="Consultas"),
     path('consultas12', views_registros.consultar12,name="Consultas"),
     path('subir',views_registros.archivos,name="Subir"),
+    path('consultasSQL',views_registros.consultasSQL,name="sql"),
 ]
 
 

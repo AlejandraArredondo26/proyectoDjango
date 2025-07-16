@@ -120,3 +120,9 @@ def archivos(request):
     return render(request, "registros/archivos.html", {'archivo': Archivos})
 
 
+def consultasSQL(request):
+    alumnos=Alumnos.objects.raw('SELECT id,matricula,nombre, carrera, turno, imagen FROM registros_alumnos WHERE carrera="TI" ORDER BY turno DESC')
+
+    return render(request,"registros/consulta.html", {'alumnos':alumnos})
+
+
